@@ -13,6 +13,10 @@ export default {
         foreground: "var(--foreground)",
       },
     },
+    fontFamily:{
+      oswald:"Oswald, sans-serif",
+      urbanist:"Urbanist, sans—serif",
+    }
   },
   plugins: [],
 } satisfies Config;
