@@ -168,30 +168,27 @@ const RightColumn = ({product}) => {
                 <button 
                     className='w-full py-4 rounded-full bg-black text-white text-lg font-medium
                     transition-transform active:scale-95 mb-3 hover:opacity-75' 
-                    onClick={()=>{                      
-                            if(!selectedSize) {
-                                setShowError(true)
-                                document.getElementById("sizesGrid").scrollIntoView({
-                                    block:"center",
-                                    behavior:"smooth"
-                                })
-                            } else {     
-                                dispatch(
-                                    addToCart({
+                    onClick={() => {                      
+                        if (!selectedSize) {
+                            setShowError(true);
+                            document.getElementById("sizesGrid").scrollIntoView({
+                                block: "center",
+                                behavior: "smooth"
+                            });
+                        } else {     
+                            const uniqueId = `${p.id}-${selectedColor}-${selectedSize}`; // Unique ID
+                    
+                            dispatch(
+                                addToCart({
                                     ...p,
+                                    id: uniqueId, // Override ID with unique variation ID
                                     selectedSize,
                                     oneQuantityPrice: p.Price,
-                                    selectedColor,
-                                    size
-                                    // sizeColor:v
-
-                                    })
-                                );                       
-                                notify()
-                            }
-                        // }
-
-                        
+                                    selectedColor
+                                })
+                            );                       
+                            notify();
+                        }
                     }}
                     >
                         Add to cart
