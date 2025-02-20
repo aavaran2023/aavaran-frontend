@@ -76,6 +76,7 @@ const Checkout = () => {
 
 
   return (
+    <div>
     <div className="max-w-6xl mx-auto p-8 bg-white shadow-md rounded-lg mt-16">
       <h2 className="text-2xl font-semibold mb-6 text-center">User Information Form</h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
@@ -146,24 +147,34 @@ const Checkout = () => {
           Submit
         </button>
       </form>
-      {/* Popup for successful order placement */}
-      <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)} modal closeOnDocumentClick>
-        <div className="p-6 bg-white shadow-2xl rounded-xl w-80 text-center">
-          <h2 className="text-2xl font-semibold text-green-600">🎉 Order Confirmed!</h2>
-          <p className="mt-3 text-gray-600 text-sm">
-            Your order has been placed successfully. A confirmation email will be sent shortly.
-          </p>
-          <button 
-            onClick={() => {
-              setIsPopupOpen(false);
-              router.push("/");
-            }} 
-            className="mt-5 w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-indigo-600 hover:to-blue-500 text-white font-medium py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
-            Go to Home 🏠
-          </button>
-        </div>
-      </Popup>
+      
 
+    </div>
+    {/* Popup for successful order placement */}
+    <Popup 
+                open={isPopupOpen} 
+                modal 
+                closeOnDocumentClick={false} // Prevent closing by clicking outside
+                lockScroll={true} // Prevent scrolling when popup is open
+                overlayStyle={{
+                  backgroundColor: 'rgba(200, 200, 200, 0.8)',
+                }}
+              >
+                <div className="p-6 bg-black shadow-2xl rounded-xl w-[350px] md:w-[600px] text-center">
+                  <img src="aavaran-white.png" className="w-[200px] md:w-[250px] block mx-auto mb-4" />
+                  <h2 className="text-xl text-white mt-3"> Thank you for Shopping</h2>
+                  <p className="mt-3 text-gray-400 text-sm">
+                    Your order has been placed successfully. You will receive a confirmation call shortly.
+                  </p>
+                  <button 
+                    onClick={() => {
+                      setIsPopupOpen(false);
+                    }} 
+                    className="mt-5 w-full bg-white text-black font-medium py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+                    Continue Shopping
+                  </button>
+                </div>
+              </Popup>
     </div>
     
   );

@@ -99,8 +99,8 @@ const CartItem = ({data}) => {
                     <div className='flex items-center gap-2 md:gap-10 text-black/[0.5] text-sm md:text-md'>
                         {/* Color Start */}
                         <div className='flex items-center gap-1'>
-                            <div className='font-semibold'>Color:</div>
-                            {p.selectedColor}
+                            <div className='font-semibold text-[13px]'>Color:</div>
+                            <div className='font-semibold text-[13px]'>{p.selectedColor}</div>
                             {/* <select 
                                 className='hover:text-black'
                                 value={p.selectedColor} // ✅ Use value here
@@ -121,8 +121,8 @@ const CartItem = ({data}) => {
                         {/* Color End */}
                         {/* Size Start */}
                         <div className='flex items-center gap-1'>
-                            <div className='font-semibold'>Size:</div> 
-                            {p.selectedSize}
+                            <div className='font-semibold text-[13px]'>Size:</div> 
+                            <div className='font-semibold text-[13px]'>{p.selectedSize}</div>
                             {/* <select 
                                 className='hover:text-black'
                                 // value={p.selectedSize}
@@ -178,7 +178,7 @@ const CartItem = ({data}) => {
                     </div>
                     {pathname === '/cart' &&(
                         <RiDeleteBin6Line 
-                        onClick={()=>dispatch(removeFromCart({id: data.id}))}
+                        onClick={(e)=>dispatch(removeFromCart({id: e}))}
                         className='cursor-pointer text-black/[0.5] hover:text-black text-[16px] md:text-[20px]'></RiDeleteBin6Line>
                     )}
                 </div>
